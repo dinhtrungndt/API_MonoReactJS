@@ -5,13 +5,13 @@ const ObjectId = Schema.ObjectId;
 const subtasksSchema = new Schema(
   {
     _id: { type: ObjectId, auto: true },
-    subtasksName: { type: String, required: true },
+    name: { type: String, required: true },
     subtasksDate: { type: Date, required: true },
     shippedDate: { type: Date, required: true },
     units: { type: String, required: true },
     unitPrice: { type: String, required: true },
     price: { type: Number, required: true },
-    Category: { type: String, required: true },
+    content: { type: String, required: true },
   },
   { _id: false }
 );

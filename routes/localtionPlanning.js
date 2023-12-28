@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var modelLocationP = require("../models/localtionPlanning");
+var cors = require("cors"); // Import the cors middleware
 
+// Enable CORS for all routes
+router.use(cors());
 // lấy danh sách locationP
 // http://localhost:3000/locationP/get-locationP
 router.get("/get-locationP", async function (req, res) {

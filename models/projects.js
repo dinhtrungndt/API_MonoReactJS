@@ -19,7 +19,7 @@ const ITask = new Schema(
     createdDate: { type: Date, required: true },
     updatedBy: { type: String, required: true },
     updatedDate: { type: Date, required: true },
-    priority: { type: Date, required: true },
+    priority: { type: String, required: true },
     projectTaskTypeRow: { type: String, required: true },
     contractNo: { type: String, required: true },
     projectedRevenue: { type: Number, required: true },

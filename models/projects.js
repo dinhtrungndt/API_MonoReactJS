@@ -60,6 +60,8 @@ const Projects = new Schema(
     currencyUnit: { type: String, required: true },
     progress: { type: String, required: true },
     priority: { type: String, required: true },
+    hasChild: true,
+    expanded: true,
     subtasks: [ITask],
   },
   {

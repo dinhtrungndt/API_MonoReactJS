@@ -7,14 +7,14 @@ var cors = require("cors"); // Import the cors middleware
 router.use(cors());
 
 // lấy danh sách projects
-// http://localhost:3000/projects/get-projects
+// http://localhost:8080/projects/get-projects
 router.get("/get-projects", async function (req, res) {
-  var Data = await modelProjects.find();
-  res.json(Data);
+  var data = await modelProjects.find();
+  res.json({data});
 });
 
 //  Thêm danh sách projects
-// http://localhost:3000/projects/add-projects
+// http://localhost:8080/projects/add-projects
 router.post("/add-projects", async function (req, res, next) {
   try {
     var Data = await modelProjects.create(req.body);
@@ -27,7 +27,7 @@ router.post("/add-projects", async function (req, res, next) {
 });
 
 //  Xóa danh sách projects
-// http://localhost:3000/projects/delete-projects
+// http://localhost:8080/projects/delete-projects
 router.delete("/delete-projects/:id", async function (req, res, next) {
   try {
     var Data = await modelProjects.findByIdAndDelete(req.params.id);
@@ -38,5 +38,9 @@ router.delete("/delete-projects/:id", async function (req, res, next) {
     res.json({ status: 500, message: "Xóa thất bại" });
   }
 });
+
+//  Sửa danh sách projects
+// http://localhost:8080/projects/update-projects
+
 
 module.exports = router;

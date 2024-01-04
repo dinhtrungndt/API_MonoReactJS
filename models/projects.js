@@ -28,6 +28,23 @@ const ITask = new Schema(
   { _id: false }
 );
 
+const StatusProjects = new Schema(
+  {
+    _id: { type: ObjectId, auto: true },
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    createdBy: { type: String, required: true },
+    createdDate: { type: Date, required: true },
+    updatedBy: { type: String, required: true },
+    updatedDate: { type: Date, required: true },
+    subtasks: [ITask],
+
+  },
+  {
+    versionKey: false,
+  }
+);
+
 const Projects = new Schema(
   {
     id: ObjectId,
@@ -35,7 +52,6 @@ const Projects = new Schema(
     siteNo_: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
-    statusProject: { type: String, required: true },
     projectManagerNo_: { type: String, required: true },
     assignNo_: { type: String, required: true },
     location: { type: String, required: true },
@@ -60,9 +76,9 @@ const Projects = new Schema(
     currencyUnit: { type: String, required: true },
     progress: { type: String, required: true },
     priority: { type: String, required: true },
-    hasChild: true,
-    expanded: true,
-    subtasks: [ITask],
+    hasChild: { type: Boolean, required: true },
+    expanded:  { type: Boolean, required: true },
+    subtasks: [StatusProjects],
   },
   {
     versionKey: false,

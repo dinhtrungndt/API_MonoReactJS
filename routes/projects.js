@@ -42,5 +42,4 @@ router.delete("/delete-projects/:id", async function (req, res, next) {
 //  Sửa danh sách projects
 // http://localhost:8080/projects/update-projects
 
-
 module.exports = router;

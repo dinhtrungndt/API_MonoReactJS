@@ -28,23 +28,6 @@ const ITask = new Schema(
   { _id: false }
 );
 
-const StatusProjects = new Schema(
-  {
-    _id: { type: ObjectId, auto: true },
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    createdBy: { type: String, required: true },
-    createdDate: { type: Date, required: true },
-    updatedBy: { type: String, required: true },
-    updatedDate: { type: Date, required: true },
-    subtasks: [ITask],
-
-  },
-  {
-    versionKey: false,
-  }
-);
-
 const Projects = new Schema(
   {
     id: ObjectId,
@@ -78,7 +61,7 @@ const Projects = new Schema(
     priority: { type: String, required: true },
     hasChild: { type: Boolean, required: true },
     expanded:  { type: Boolean, required: true },
-    subtasks: [StatusProjects],
+    ITask: [ITask],
   },
   {
     versionKey: false,

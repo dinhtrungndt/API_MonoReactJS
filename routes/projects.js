@@ -39,21 +39,33 @@ router.delete("/delete-projects/:id", async function (req, res, next) {
   }
 });
 
-//  Sửa danh sách projects theo id
-// http://localhost:8080/projects/update-projects
-router.put("/update-projects", async function (req, res, next) {
-try {
-    const body = req.body;
-    const id = body.id;
-    const data = body.data;
+// Sửa danh sách projects theo id
+// http://localhost:8080/projects/update-projects/:id
+router.put("/update-projects/:id", async function (req, res, next) {
+  try {
+    // Extract the updated data from the request body
+    const updatedData = req.body;
 
-    await modelProjects.findByIdAndUpdate(id, data);
-    res.json({ status: 200, message: "Sửa thành công" });
+    // Find the project by ID and update it
+    const updatedProject = await modelProjects.findByIdAndUpdate(
+      req.params.id,
+      updatedData,
+      { new: true } // Set this option to true to get the updated document as a result
+    );
+
+    if (!updatedProject) {
+      // If the project is not found, return an error
+      return res.status(404).json({ status: 404, message: "Project not found" });
+    }
+
+    // Return the updated project
+    res.json({ status: 200, message: "Cập nhật thành công", updatedProject });
   } catch (err) {
+    // Handle errors
     next(err);
-    res.json({ status: 500, message: "Sửa thất bại" });
+    res.status(500).json({ status: 500, message: "Cập nhật thất bại" });
   }
-}
-);
+});
+
 
 module.exports = router;

@@ -44,8 +44,10 @@ router.delete("/delete-projects/:id", async function (req, res, next) {
 router.put("/update-projects", async function (req, res, next) {
 try {
     const body = req.body;
-    
-    await modelNews.findByIdAndUpdate(body.id, body);
+    const id = body.id;
+    const data = body.data;
+
+    await modelProjects.findByIdAndUpdate(id, data);
     res.json({ status: 200, message: "Sửa thành công" });
   } catch (err) {
     next(err);

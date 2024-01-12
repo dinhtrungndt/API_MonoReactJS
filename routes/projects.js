@@ -39,7 +39,19 @@ router.delete("/delete-projects/:id", async function (req, res, next) {
   }
 });
 
-//  Sửa danh sách projects
+//  Sửa danh sách projects theo id
 // http://localhost:8080/projects/update-projects
+router.put("/update-projects", async function (req, res, next) {
+try {
+    const body = req.body;
+    
+    await modelNews.findByIdAndUpdate(body.id, body);
+    res.json({ status: 200, message: "Sửa thành công" });
+  } catch (err) {
+    next(err);
+    res.json({ status: 500, message: "Sửa thất bại" });
+  }
+}
+);
 
 module.exports = router;

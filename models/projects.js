@@ -9,7 +9,7 @@ const ITask = new Schema(
     siteNo_: { type: String, required: true },
     parentProjectTaskRow: { type: String, required: true },
     projectRow: { type: String, required: true },
-    statusProject: { type: String, required: true },
+    statusProject: { type: Number, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     assignNo_: { type: String, required: true },

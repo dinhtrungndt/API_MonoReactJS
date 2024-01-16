@@ -44,6 +44,7 @@ const Projects = new Schema(
     source: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
+    statusProject: { type: Number, required: true },
     createdBy: { type: String, required: true },
     createDate: { type: Date, required: true },
     updatedBy: { type: String, required: true },

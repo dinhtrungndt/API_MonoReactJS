@@ -67,5 +67,18 @@ router.put("/update-projects/:id", async function (req, res, next) {
   }
 });
 
+// Xem chi tiết danh sách projects theo id
+// http://localhost:8080/projects/get-projects/:id
+router.get("/get-projects/:id", async function (req, res, next) {
+  try {
+    var Data = await modelProjects.findById(req.params.id);
+
+    res.json({ status: 200, message: "Xem chi tiết thành công", Data });
+  } catch (err) {
+    next(err);
+    res.json({ status: 500, message: "Xem chi tiết thất bại" });
+  }
+});
+
 
 module.exports = router;

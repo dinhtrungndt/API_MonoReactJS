@@ -15,6 +15,7 @@ const ITask = new Schema(
     assignNo_: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
+    projectURL: { type: String, required: true },
     createdBy: { type: String, required: true },
     createdDate: { type: Date, required: true },
     updatedBy: { type: String, required: true },
